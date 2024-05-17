@@ -189,20 +189,6 @@
     )
   (om-invalidate-view self))
 
-(defmethod init-titlebar ((self preeditor))
-  (call-next-method)
-  (apply 'om-add-subviews
-         (cons (title-bar self)
-               (loop for icon in '("first" "prev" "next" "last")
-                     for fun in '(start-patch back-patch fw-patch last-patch)
-                     for xx = 180 then (+ xx 21)
-                     collect
-                     (let ((f fun))
-                       (om-make-view 'om-icon-button :position (om-make-point xx 2) :size (om-make-point 22 22)
-                                     :icon1 icon :icon2 (string+ icon "-pushed")
-                                     :action #'(lambda (item) (funcall f (panel self)))))
-                 ))
-         ))
 |#
 
 (defmethod start-patch ((Self prePanel))
