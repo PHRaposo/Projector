@@ -5,8 +5,9 @@
 ;MENU
 ;=======================================
 
-(defclass! presentador () ((folder :initform nil :initarg :folder :accessor folder) (patch-list
-:accessor patch-list)) (:icon 128))
+(defclass! presentador () 
+ ((folder :initform nil :initarg :folder :accessor folder)
+  (patch-list :accessor patch-list)) (:icon 128))
 
 (defun load-patches-in (folder) ;phraposo(2024)
  "This function allows presentador to load all patches and patches inside subfolders inside <folder>."
@@ -107,7 +108,6 @@
     ;#+(or linux win32)(om-set-view-position (title-bar (editorframe object)) (om-make-point 20 20))
    )
   (om-invalidate-view self))
-
 
 (defmethod initialize-instance :after ((Self preeditor) &rest L)
    (declare (ignore l))
